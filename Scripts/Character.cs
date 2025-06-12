@@ -1,7 +1,6 @@
 using Godot;
 using Godot.Collections;
 using System;
-using System.Runtime.InteropServices;
 
 public partial class Character : Node2D
 {
@@ -54,17 +53,33 @@ public partial class Character : Node2D
 
     public void TakeDamage(int amount)
     {
-
+        Health -= amount;
+        EmitSignal(SignalName.OnTakeDamage, Health);
+        PlayAudio(takeDamageSFX);
     }
 
     public void Heal(int amount)
     {
-
+        Health += amount;
+        Health = Math.Clamp(Health, 0, MaxHealth);
+        EmitSignal(SignalName.OnHeal, Health);
+        PlayAudio(healSFX);
     }
 
     public void CastCombatAction(CombatAction action, Character opponent)
     {
+        if (action is null) return;
 
+        if (action.MeleeDamage > 0)
+        {
+            opponent.TakeDamage(action.MeleeDamage);
+        }
+
+        if (action.HealAmount > 0)
+        {
+            GD.Print("healing");
+            Heal(action.HealAmount);
+        }
     }
 
     public void PlayAudio(AudioStream stream)

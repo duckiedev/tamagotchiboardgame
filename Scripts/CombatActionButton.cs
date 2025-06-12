@@ -6,7 +6,7 @@ public partial class CombatActionButton : Button
 {
     private CombatAction combatAction;
     public CombatAction CombatAction {
-        get => CombatAction;
+        get => combatAction;
         set
         {
             combatAction = value;

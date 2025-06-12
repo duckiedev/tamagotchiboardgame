@@ -50,7 +50,7 @@ public partial class BattleManager : Node2D
             aiCharacter.CastCombatAction(actionToCast, playerCharacter);
 
             await ToSignal(GetTree().CreateTimer(0.5), "timeout");
-            NextTurn();
+            await NextTurn();
 
         }
     }
@@ -67,6 +67,7 @@ public partial class BattleManager : Node2D
 
     public CombatAction AIDecideCombatAction()
     {
+        
         return null;
     }
 }
