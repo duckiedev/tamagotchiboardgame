@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://divpus5ec1kfr"]
+
+[ext_resource type="Script" uid="uid://mqwf86up7xm5" path="res://Scripts/Core/PlayerToken.cs" id="1_il650"]
+
+[node name="PlayerToken" type="Node2D"]
+script = ExtResource("1_il650")

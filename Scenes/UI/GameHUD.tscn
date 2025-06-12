@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://datkgc7eej2m4"]
+
+[node name="GameHud" type="Node2D"]

@@ -1,0 +1,2 @@
+# tamagotchiboardgame
+

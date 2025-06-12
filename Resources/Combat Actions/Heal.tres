@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=2 format=3 uid="uid://dt5if0l8i8k2j"]
+
+[ext_resource type="Script" uid="uid://kdwp7hqfgv3h" path="res://Scripts/CombatAction.cs" id="1_syfoq"]
+
+[resource]
+script = ExtResource("1_syfoq")
+DisplayName = "Heal"
+Description = "Heal for 10 health."
+MeleeDamage = 0
+HealAmount = 10
+BaseWeight = 100
+metadata/_custom_type_script = "uid://kdwp7hqfgv3h"
