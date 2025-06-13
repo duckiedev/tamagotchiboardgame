@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwwghoms38pmm"]
+[gd_scene load_steps=12 format=3 uid="uid://dwwghoms38pmm"]
 
 [ext_resource type="Script" uid="uid://cgbe41j8rfd3i" path="res://Scripts/BattleManager.cs" id="1_1samx"]
 [ext_resource type="Texture2D" uid="uid://cxr42aujr4vql" path="res://Assets/Graphics/BattleBackgrounds/backgroundCastles.png" id="1_wvl2i"]
@@ -8,6 +8,13 @@
 [ext_resource type="Resource" uid="uid://cyitcmotng6xu" path="res://Resources/Combat Actions/HeavyHit.tres" id="5_6yjxy"]
 [ext_resource type="Resource" uid="uid://dt5if0l8i8k2j" path="res://Resources/Combat Actions/Heal.tres" id="6_qxnh6"]
 [ext_resource type="Script" uid="uid://cbjqp7pytf07j" path="res://Scripts/CombatActionButton.cs" id="7_c5ef4"]
+[ext_resource type="Script" uid="uid://ck3urrrxc87k8" path="res://Scripts/EndScreen.cs" id="9_6yjxy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxnh6"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_262jj"]
+font_size = 48
 
 [node name="BattleManager" type="Node2D" node_paths=PackedStringArray("playerCharacter", "aiCharacter")]
 script = ExtResource("1_1samx")
@@ -28,7 +35,7 @@ stretch_mode = 1
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_2h7oj")]
 position = Vector2(-230, 0)
 IsPlayer = true
-Health = 10
+Health = 40
 MaxHealth = 50
 CombatActions = Array[Object]([ExtResource("4_u22qb"), ExtResource("5_6yjxy"), ExtResource("6_qxnh6")])
 
@@ -88,4 +95,46 @@ offset_right = 442.0
 offset_bottom = 149.0
 bbcode_enabled = true
 
+[node name="EndScreen" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qxnh6")
+script = ExtResource("9_6yjxy")
+
+[node name="HeaderText" type="Label" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player has won the game!"
+label_settings = SubResource("LabelSettings_262jj")
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = 75.5
+offset_right = 44.0
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again"
+
 [connection signal="pressed" from="CanvasLayer/CombatActionsUI/ButtonContainer/PassTurnButton" to="CanvasLayer/CombatActionsUI" method="_on_pass_turn_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndScreen/PlayAgainButton" to="CanvasLayer/EndScreen" method="_on_play_again_button_pressed"]
