@@ -15,15 +15,23 @@ public partial class Character : Node2D
 
     private float targetScale = 1.0f;
 
+    private CharacterVisual characterVisual;
+    [Export] private Texture2D displayTexture; 
+
     private AudioStreamPlayer2D audio;
     private AudioStream takeDamageSFX;
     private AudioStream healSFX;
 
     public override void _Ready()
     {
+        characterVisual = GetNode<CharacterVisual>("CharacterVisual");
+        characterVisual.FlipH = !IsPlayer;
+        characterVisual.Texture = displayTexture;
+
         audio = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
         takeDamageSFX = GD.Load<AudioStream>("res://Assets/Audio/SFX/take_damage.wav");
         healSFX = GD.Load<AudioStream>("res://Assets/Audio/SFX/heal.wav");
+
     }
 
     public override void _Process(double delta)

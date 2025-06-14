@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://37atiqip8vd1"]
+[gd_scene load_steps=8 format=3 uid="uid://37atiqip8vd1"]
 
 [ext_resource type="Script" uid="uid://sola6tjhgpt1" path="res://Scripts/Character.cs" id="1_jo2ib"]
 [ext_resource type="Texture2D" uid="uid://dm8ofe4kc4mll" path="res://Assets/Graphics/Characters/Dragon.png" id="2_677pu"]
 [ext_resource type="Script" uid="uid://c4i0jqpg0xcm0" path="res://Scripts/HealthBar.cs" id="3_677pu"]
+[ext_resource type="Script" uid="uid://bn61l36707ohc" path="res://Scripts/CharacterVisual.cs" id="3_v7dgu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7dgu"]
 bg_color = Color(0.192914, 0.192914, 0.192914, 1)
@@ -17,9 +18,10 @@ shadow_color = Color(0, 0, 0, 0.831373)
 [node name="Character" type="Node2D"]
 script = ExtResource("1_jo2ib")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CharacterVisual" type="Sprite2D" parent="."]
 texture = ExtResource("2_677pu")
 offset = Vector2(0, -72)
+script = ExtResource("3_v7dgu")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
