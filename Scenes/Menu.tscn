@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://baqwsbmqbdfn8"]
+
+[ext_resource type="Script" uid="uid://upw2xmwb5olg" path="res://Scripts/Menu.cs" id="1_6pedr"]
+[ext_resource type="Texture2D" uid="uid://cxr42aujr4vql" path="res://Assets/Graphics/BattleBackgrounds/backgroundCastles.png" id="2_syfuq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s2c3o"]
+font_size = 48
+font_color = Color(0.785735, 0.573317, 0.401266, 1)
+outline_size = 12
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6pedr")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1161.0
+offset_bottom = 1201.0
+texture = ExtResource("2_syfuq")
+expand_mode = 4
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = -33.5
+offset_right = 258.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Micro Turn-Based RPG"
+label_settings = SubResource("LabelSettings_s2c3o")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = 50.0
+offset_right = 52.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = 140.0
+offset_right = 53.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

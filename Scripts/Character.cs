@@ -36,9 +36,11 @@ public partial class Character : Node2D
 
     public override void _Process(double delta)
     {
-        base._Process(delta);
+        Scale = new Vector2(
+            (float)Mathf.Lerp(Scale.X, targetScale, delta * 10),
+            (float)Mathf.Lerp(Scale.Y, targetScale, delta * 10)
+        );
     }
-
 
     public void BeginTurn()
     {
@@ -92,6 +94,7 @@ public partial class Character : Node2D
 
     public void PlayAudio(AudioStream stream)
     {
-        
+        audio.Stream = stream;
+        audio.Play();
     }
 }

@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwwghoms38pmm"]
+[gd_scene load_steps=17 format=3 uid="uid://dwwghoms38pmm"]
 
 [ext_resource type="Script" uid="uid://cgbe41j8rfd3i" path="res://Scripts/BattleManager.cs" id="1_1samx"]
 [ext_resource type="Texture2D" uid="uid://cxr42aujr4vql" path="res://Assets/Graphics/BattleBackgrounds/backgroundCastles.png" id="1_wvl2i"]
 [ext_resource type="PackedScene" uid="uid://37atiqip8vd1" path="res://Scenes/Character.tscn" id="3_2h7oj"]
+[ext_resource type="Script" uid="uid://bql504tapgddb" path="res://Scripts/MovingBackground.cs" id="3_xmk5i"]
 [ext_resource type="Script" uid="uid://b146fytvig62r" path="res://Scripts/UI/CombatActionsUI.cs" id="4_p46lj"]
 [ext_resource type="Resource" uid="uid://cmeglosohiocs" path="res://Resources/Combat Actions/Slash.tres" id="4_u22qb"]
 [ext_resource type="Resource" uid="uid://cyitcmotng6xu" path="res://Resources/Combat Actions/HeavyHit.tres" id="5_6yjxy"]
@@ -11,6 +12,11 @@
 [ext_resource type="Script" uid="uid://cbjqp7pytf07j" path="res://Scripts/CombatActionButton.cs" id="7_c5ef4"]
 [ext_resource type="Texture2D" uid="uid://ci42duxdi88o3" path="res://Assets/Graphics/Characters/Boar.png" id="8_l0uqe"]
 [ext_resource type="Script" uid="uid://ck3urrrxc87k8" path="res://Scripts/EndScreen.cs" id="9_6yjxy"]
+[ext_resource type="AudioStream" uid="uid://s7801j6y55lw" path="res://Assets/Audio/Music/battle_music.wav" id="12_l0uqe"]
+
+[sub_resource type="Gradient" id="Gradient_xmk5i"]
+offsets = PackedFloat32Array(0, 0.489754, 1)
+colors = PackedColorArray(0.933333, 0, 0.00784314, 1, 0.647059, 0.741176, 0.211765, 1, 0.183684, 0.697587, 0.641095, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxnh6"]
 bg_color = Color(0, 0, 0, 1)
@@ -23,14 +29,16 @@ script = ExtResource("1_1samx")
 playerCharacter = NodePath("PlayerCharacter")
 aiCharacter = NodePath("AICharacter")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MovingBackground" type="TextureRect" parent="."]
 z_index = -1
-offset_left = -836.0
-offset_top = -518.0
-offset_right = 781.0
-offset_bottom = 506.0
+offset_left = -2284.0
+offset_top = -515.0
+offset_right = 768.0
+offset_bottom = 509.0
 texture = ExtResource("1_wvl2i")
 stretch_mode = 1
+script = ExtResource("3_xmk5i")
+colorLerp = SubResource("Gradient_xmk5i")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -139,6 +147,11 @@ offset_bottom = 106.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play Again"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_l0uqe")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/CombatActionsUI/ButtonContainer/PassTurnButton" to="CanvasLayer/CombatActionsUI" method="_on_pass_turn_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndScreen/PlayAgainButton" to="CanvasLayer/EndScreen" method="_on_play_again_button_pressed"]
