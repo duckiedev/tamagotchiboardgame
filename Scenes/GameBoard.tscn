@@ -1,3 +1,183 @@
-[gd_scene format=3 uid="uid://b4lppppccsra6"]
+[gd_scene load_steps=10 format=3 uid="uid://c7g0g75vdah6p"]
 
-[node name="GameBoard" type="Node2D"]
+[ext_resource type="Script" uid="uid://dc8f0goy5gja1" path="res://Scenes/GameBoard.cs" id="1_y2qi3"]
+[ext_resource type="PackedScene" uid="uid://bbnot05ofg0p3" path="res://Scenes/BoardSpaceTile.tscn" id="2_fkmb8"]
+[ext_resource type="Script" uid="uid://ebeajws6pw42" path="res://Scripts/StateMachine/StateMachine.cs" id="2_p6xeg"]
+[ext_resource type="PackedScene" uid="uid://dsdr7rhkkt5l8" path="res://PlayerCharacter.tscn" id="2_y2qi3"]
+[ext_resource type="Script" uid="uid://d0p72mw8lorqd" path="res://GameBoard/States/InitializeState.cs" id="3_u7cjo"]
+[ext_resource type="Script" uid="uid://d3tp0gjl4naob" path="res://GameBoard/States/WhoGoesFirstState.cs" id="4_2oomg"]
+[ext_resource type="Script" uid="uid://l0s0t42farwf" path="res://Scenes/DebugMoveButton.cs" id="4_ontlx"]
+[ext_resource type="PackedScene" uid="uid://dpw75yl012l7t" path="res://Die.tscn" id="5_ontlx"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ontlx"]
+
+[node name="GameBoard" type="Node3D"]
+script = ExtResource("1_y2qi3")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_p6xeg")
+
+[node name="InitializeState" type="Node" parent="StateMachine"]
+script = ExtResource("3_u7cjo")
+
+[node name="WhoGoesFirstState" type="Node" parent="StateMachine"]
+script = ExtResource("4_2oomg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.798635, 0.601815, 0, -0.601815, 0.798635, 4, 3, 6)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
+
+[node name="PlayerSpaces" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="PlayerSpace1" type="Node3D" parent="PlayerSpaces"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="PlayerCharacter1" parent="PlayerSpaces/PlayerSpace1" node_paths=PackedStringArray("moveSpacesNode") instance=ExtResource("2_y2qi3")]
+unique_name_in_owner = true
+gravity_scale = 0.0
+moveSpacesNode = NodePath("../PlayerTiles")
+
+[node name="PlayerTiles" type="Node3D" parent="PlayerSpaces/PlayerSpace1"]
+
+[node name="BoardSpaceTile" parent="PlayerSpaces/PlayerSpace1/PlayerTiles" instance=ExtResource("2_fkmb8")]
+
+[node name="BoardSpaceTile2" parent="PlayerSpaces/PlayerSpace1/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile3" parent="PlayerSpaces/PlayerSpace1/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile4" parent="PlayerSpaces/PlayerSpace1/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile5" parent="PlayerSpaces/PlayerSpace1/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile6" parent="PlayerSpaces/PlayerSpace1/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile7" parent="PlayerSpaces/PlayerSpace1/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile8" parent="PlayerSpaces/PlayerSpace1/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile9" parent="PlayerSpaces/PlayerSpace1/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile10" parent="PlayerSpaces/PlayerSpace1/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+type = 2
+
+[node name="PlayerSpace2" type="Node3D" parent="PlayerSpaces"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="PlayerCharacter2" parent="PlayerSpaces/PlayerSpace2" node_paths=PackedStringArray("moveSpacesNode") instance=ExtResource("2_y2qi3")]
+gravity_scale = 0.0
+moveSpacesNode = NodePath("../PlayerTiles")
+
+[node name="PlayerTiles" type="Node3D" parent="PlayerSpaces/PlayerSpace2"]
+
+[node name="BoardSpaceTile" parent="PlayerSpaces/PlayerSpace2/PlayerTiles" instance=ExtResource("2_fkmb8")]
+
+[node name="BoardSpaceTile2" parent="PlayerSpaces/PlayerSpace2/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile3" parent="PlayerSpaces/PlayerSpace2/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile4" parent="PlayerSpaces/PlayerSpace2/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile5" parent="PlayerSpaces/PlayerSpace2/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile6" parent="PlayerSpaces/PlayerSpace2/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile7" parent="PlayerSpaces/PlayerSpace2/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile8" parent="PlayerSpaces/PlayerSpace2/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile9" parent="PlayerSpaces/PlayerSpace2/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+type = 1
+
+[node name="BoardSpaceTile10" parent="PlayerSpaces/PlayerSpace2/PlayerTiles" instance=ExtResource("2_fkmb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+type = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DebugMoveButton" type="Button" parent="CanvasLayer"]
+offset_left = 70.0
+offset_top = 1.0
+offset_right = 178.0
+offset_bottom = 32.0
+text = "Move Spaces"
+script = ExtResource("4_ontlx")
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/DebugMoveButton"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = -1.0
+offset_right = -1.4375
+offset_bottom = 30.0
+text = "1"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_ontlx")
+
+[node name="DieBox" type="Node3D" parent="."]
+
+[node name="Die" parent="DieBox" instance=ExtResource("5_ontlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64269, 2, 4.75258)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="DieBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 1)
+transparency = 1.0
+use_collision = true
+size = Vector3(9, 8, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="DieBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 6)
+transparency = 1.0
+use_collision = true
+size = Vector3(9, 8, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="DieBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 4.5)
+transparency = 1.0
+use_collision = true
+size = Vector3(1, 8, 8)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="DieBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0, 4.5)
+transparency = 1.0
+use_collision = true
+size = Vector3(1, 8, 8)
+
+[connection signal="RollFinished" from="DieBox/Die" to="." method="_on_die_roll_finished"]

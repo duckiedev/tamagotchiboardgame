@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://di5vl8uev2q0h"]
+
+[ext_resource type="Script" uid="uid://bwf55ca14gj6g" path="res://DiceManager.cs" id="1_7yuh8"]
+
+[node name="DiceManager" type="Node"]
+script = ExtResource("1_7yuh8")

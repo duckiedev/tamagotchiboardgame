@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbnot05ofg0p3"]
+
+[ext_resource type="Script" uid="uid://dllj8f42eq4ci" path="res://Scenes/BoardSpaceTile.cs" id="1_qd7wi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14caa"]
+albedo_color = Color(0.476372, 0.737371, 0.336854, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qd7wi"]
+material = SubResource("StandardMaterial3D_14caa")
+size = Vector3(0.95, 0.1, 0.95)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qd7wi"]
+albedo_color = Color(0.392157, 0.423529, 0.490196, 1)
+emission = Color(0.713726, 0, 0, 1)
+backlight = Color(0.460736, 0.460736, 0.460736, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qd7wi"]
+size = Vector3(0.95, 0.1, 0.95)
+
+[node name="BoardSpaceTile" type="Area3D"]
+monitorable = false
+script = ExtResource("1_qd7wi")
+highlightedColor = Color(0.392157, 0.690196, 0.490196, 1)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("BoxMesh_qd7wi")
+material = SubResource("StandardMaterial3D_qd7wi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qd7wi")

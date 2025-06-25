@@ -45,7 +45,7 @@ colorLerp = SubResource("Gradient_xmk5i")
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_2h7oj")]
 position = Vector2(-230, 0)
 IsPlayer = true
-Health = 40
+Health = 50
 MaxHealth = 50
 CombatActions = Array[Object]([ExtResource("4_u22qb"), ExtResource("5_6yjxy"), ExtResource("6_qxnh6")])
 displayTexture = ExtResource("7_262jj")

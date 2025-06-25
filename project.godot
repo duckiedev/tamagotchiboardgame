@@ -10,11 +10,20 @@ config_version=5
 
 [application]
 
-config/name="TamagotchiBoardGame"
+config/name="MonsterBattleRace"
 run/main_scene="uid://baqwsbmqbdfn8"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerManager="*res://PlayerManager.cs"
+
 [dotnet]
 
 project/assembly_name="TamagotchiBoardGame"
+
+[global_group]
+
+stickers=""
+player=""

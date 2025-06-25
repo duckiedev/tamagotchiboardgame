@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7tup7oac4w3c"]
-
-[ext_resource type="Script" uid="uid://db746ulrrvmb0" path="res://Scripts/Core/BoardSpace.cs" id="1_ddkae"]
-
-[node name="BoardSpace" type="Node2D"]
-script = ExtResource("1_ddkae")
